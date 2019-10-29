@@ -1,0 +1,46 @@
+<% include partials/header %>
+<div class="ui main text container">
+	<div class="ui huge header">Welcome!</div>
+	<div class="item">
+				<a href="/channel/new" class="ui primary button">New Channel</a>
+	</div>
+	<div class="ui top attached segment">
+		<div class="ui divided items">
+			<%channel.find(function(mychannel){ %>
+			<div class="item">
+				<div class="content">
+					<a href="/channel/<%=mychannel._id%>" class="header"><%=mychannel.title%></a>	
+					<div class="meta">
+						<span><%=mychannel.created.toDateString()%></span>					
+					</div>
+					<div class="description">
+						<p><%=mychannel.Field1%></p>	
+					</div>
+					<div class="description">
+						<p><%=mychannel.value1%></p>	
+					</div>
+					<div class="description">
+						<p><%=mychannel.Field2%></p>	
+					</div>
+					<div class="description">
+						<p><%=mychannel.value2%></p>	
+					</div>			
+					<div class="extra">
+						<a  href="/channel/<%=mychannel._id%>" class="ui animated green basic button" tabindex="0">
+							<div class="visible content">View Channel</div>
+							<div class="hidden content">
+								<i class="right arrow icon"></i>
+							</div>
+						</a>
+					</div>				
+				</div>
+			</div>
+			<% }) %>
+		</div>
+	</div>
+</div>
+<li><a href="/register" title="">Register</a></li>
+<li><a href="/login" title="">Log In</a></li>
+<li><a href="/logout" title="">Logout</a></li>
+<li><a href="/channel" title="">Secret Page</a></li>
+<% include partials/footer %>

@@ -1,0 +1,36 @@
+<% include partials/header %>
+<div class="ui main text container segment">
+	<div class="ui huge header">Add Channel!</div>
+	<form class="ui form" action="/channel" method="POST">
+		<div class="field">
+			<label>Channel name</label>
+			<input type="text" name="channel[title]" placeholder="Title">
+		</div>
+		<div class="field">
+			<label>Description</label>
+			<input type="text" name="channel[body]" placeholder="Description">
+		</div>
+		<div class="field">
+			<label>Field1 name</label>
+			<input type="text" name="channel[Field1]" placeholder="Field 1">
+		</div>
+		<div class="field">
+			<label>Value 1</label>
+			<input type="text" name="channel[value1]" placeholder="Value 1">
+		</div>
+		<div class="field">
+			<label>Field2 name</label>
+			<input type="text" name="channel[Field2]" placeholder="Field 2">
+		</div>
+		<div class="field">
+			<label>Value 2</label>
+			<input type="text" name="channel[value2]" placeholder="Value 2">
+		</div>
+		<input class="ui green big basic button" type="submit">
+	</form>
+</div>
+<li><a href="/register" title="">Register</a></li>
+<li><a href="/login" title="">Log In</a></li>
+<li><a href="/logout" title="">Logout</a></li>
+<li><a href="/channel" title="">Secret Page</a></li>
+<% include partials/footer %>

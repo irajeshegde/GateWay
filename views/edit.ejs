@@ -1,0 +1,28 @@
+<% include partials/header %>
+<div class="ui main text container segment">
+	<div class="ui huge header">Update channel : <%=post.title%></div>
+	<form class="ui form" action="/channel/<%=post._id%>?_method=PUT" method="POST">
+		<div class="field">
+			<label>Channel Name</label>
+			<input type="text" name="channel[title]" value="<%=post.title%>">
+		</div>
+		<div class="field">
+			<label>Description</label>
+			<input type="text" name="channel[body]" value="<%=post.body%>">
+		</div>
+		<div class="field">
+			<label><%=post.Field1%></label>
+			<input type="text" name="channel[value1]" value="<%=post.value1%>">
+		</div>
+		<div class="field">
+			<label><%=post.Field2%></label>
+			<input type="text" name="channel[value2]" value="<%=post.value2%>">
+		</div>
+		<input class="ui green big basic button" type="submit" value="Update">
+	</form>
+</div>
+<li><a href="/register" title="">Register</a></li>
+<li><a href="/login" title="">Log In</a></li>
+<li><a href="/logout" title="">Logout</a></li>
+<li><a href="/channel" title="">Secret Page</a></li>
+<% include partials/footer %>

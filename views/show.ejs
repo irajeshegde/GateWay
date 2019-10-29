@@ -1,0 +1,47 @@
+	<% include partials/header %>
+	<div class="ui main text container segment">
+		<div class="ui huge header"><%= post.title%></div>
+		<div class="content">
+			<div class="meta small">
+				<%=post.created.toDateString() %>
+			</div>
+			<br>
+			<div class="text">
+				<b>API KEY : </b> <%= post._id%>
+			</div>
+			<div class="text">
+				<b>USAGE : </b>http://localhost:3000/channel/api/<%= post._id%>
+			</div>			
+		</div>
+		<br>
+		<div>
+			<%= post.Field1%>
+		</div>
+		<div class="ui top attached segment">
+			<div class="description">
+				<p><%=post.value1%></p>			
+			</div>
+		</div>
+		<br>
+		<div>
+			<%= post.Field2%>
+		</div>
+		<div class="ui top attached segment">
+			<div class="description">
+				<p><%=post.value2%></p>			
+			</div>
+		</div>
+		<br>
+		<div>
+			<a class="ui yellow basic button" href="/channel/<%= post._id%>/edit">Edit</a>
+			<form id="delete" action="/channel/<%= post._id%>?_method=DELETE" method="POST">
+				<button class="ui red basic button">Delete</button>
+			</form>	
+		</div>
+	</div>
+
+	<li><a href="/register" title="">Register</a></li>
+	<li><a href="/login" title="">Log In</a></li>
+	<li><a href="/logout" title="">Logout</a></li>
+	<li><a href="/channel" title="">Secret Page</a></li>
+	<% include partials/footer %>

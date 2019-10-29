@@ -4,14 +4,21 @@ var express 				= require('express'),
 	passport 				= require('passport'),
 	session 				= require('express-session'),
 	User					= require('./models/users'),
+	Channel					= require('./models/channels'),
 	LocalStrategy 			= require('passport-local'),
-	passportLocalMongoose 	= require('passport-local-mongoose');
+	methodOverride 			= require('method-override'),
+	passportLocalMongoose 	= require('passport-local-mongoose'),
+	expressSanitizer 		= require('express-sanitizer');;
 
-mongoose.connect("mongodb://localhost/auth_demo");
+mongoose.connect("mongodb://localhost/gate_way");
 var app = express();
 
+app.use(express.static("public"));
 app.set('view engine', 'ejs');
+app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({extended: true})); //anytime using a form and posting request
+app.use(expressSanitizer());
+app.use(methodOverride("_method"));
 
 //methods - reading session, taking data from session and encode, decode and put back
 passport.use(new LocalStrategy(User.authenticate())); //passport-local-mongoose
@@ -31,20 +38,119 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+// //CREATE DATABASE
+// Channel.create({
+// 	title: "Analog distance",
+// 	body: "Moisture and water level",
+// 	Field1: "Moist",
+// 	value1: 20.0,
+// 	Field2: "Water",
+// 	value2: 6.5,
+// });
+
+
+
 //HOME
 app.get("/", function(req, res){
 	res.render("home");
-});
-
-//SECRET page
-app.get("/secret", isLoggedIn , function(req, res){
-	res.render("secret");
 });
 
 //REGISTER
 app.get("/register", function(req, res){
 	res.render("register");
 });
+
+
+//SECRET or INDEX page
+app.get("/channel", isLoggedIn , function(req, res){
+	Channel.find({},function(err, channel){
+		if (err) {
+			console.log(err);
+		} else {
+			res.render("channel", {channel:channel});
+		}
+	});
+});
+
+
+//NEW ROUTE 
+app.get("/channel/new", isLoggedIn ,function(req, res){
+	res.render("new");
+});
+
+//CREATE ROUTE
+app.post("/channel", isLoggedIn ,function(req, res){
+	//create
+	req.body.channel.body = req.sanitize(req.body.channel.body);
+	Channel.create(req.body.channel, function(err, newcChannel){
+		if (err) {
+			res.render("new");
+		} else {
+			res.redirect("/channel")
+		}
+	});
+});
+
+//SHOW ROUTE
+app.get("/channel/:id", isLoggedIn ,function(req, res){
+	Channel.findById(req.params.id,function(err, foundPost){
+		if (err) {
+			console.log(err);
+		} else {
+			res.render("show", {post:foundPost});
+		}
+	});
+});
+
+
+//EDIT ROUTE
+app.get("/channel/:id/edit", isLoggedIn ,function(req, res){
+	Channel.findById(req.params.id,function(err, foundPost){
+		if (err) {
+			req.render("/channel");
+		} else {
+			res.render("edit", {post:foundPost});
+		}
+	});
+});
+
+//UPDATE ROUTE
+app.put("/channel/:id", isLoggedIn ,function(req, res){
+	//Channel.findByIdAndUpdate(id , new data, callback)
+	req.body.channel.body = req.sanitize(req.body.channel.body);
+	Channel.findByIdAndUpdate(req.params.id, req.body.channel, function(err, updatePost){
+		if (err) {
+			res.redirect("/channel");
+		} else {
+			res.redirect("/channel/"+req.params.id);	
+		}
+	});
+});
+
+//DELETE ROUTE
+app.delete("/channel/:id", isLoggedIn ,function(req, res){
+	//destroy
+	Channel.findByIdAndDelete(req.params.id, function(err){
+		if (err) {
+			res.redirect("/channel");
+		} else {
+			res.redirect("/channel");
+		}
+	});
+	//redirect to homepage
+});
+
+//SHOW JSON RESPONSE
+app.get("/channel/api/:id", isLoggedIn ,function(req, res){
+	Channel.findById(req.params.id,function(err, foundPost){
+		if (err) {
+			console.log(err);
+		} else {
+			res.end(JSON.stringify(foundPost));
+		}
+	});
+});
+
 
 //handeling registration
 app.post("/register", function(req, res){
@@ -56,10 +162,11 @@ app.post("/register", function(req, res){
 			return res.redirect("/");
 		} 
 		passport.authenticate("local")(req, res, function(){
-			res.redirect("/secret");
+			res.redirect("/channel");
 		});
 	});
 });
+
 
 //LOGIN ROUTES
 //Login
@@ -69,7 +176,7 @@ app.get("/login", function(req, res){
 //login logic
 app.post("/login", passport.authenticate("local",{
 	//middlewhere - which runs before callback
-	successRedirect : "/secret",
+	successRedirect : "/channel",
 	failureRedirect : "/login"
 }),function(req, res){
 	
