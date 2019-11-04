@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 // MONGOOSE MODEL CONFIG
 
 var channelsSchema = new mongoose.Schema({
+	auther: String,
 	title: String,
 	body: String,
 	Field1: String,

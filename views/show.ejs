@@ -5,6 +5,9 @@
 			<div class="meta small">
 				<%=post.created.toDateString() %>
 			</div>
+			<div class="meta small">
+				<b>Auther:</b><%=post.auther %>
+			</div>
 			<br>
 			<div class="text">
 				<b>API KEY : </b> <%= post._id%>
@@ -38,10 +41,13 @@
 				<button class="ui red basic button">Delete</button>
 			</form>	
 		</div>
+		<div align="center">
+			<li><a href="/logout" title="">Logout</a></li>
+			<li><a href="/channel" title="">Secret Page</a></li>	
+		</div>
+
+
 	</div>
 
-	<li><a href="/register" title="">Register</a></li>
-	<li><a href="/login" title="">Log In</a></li>
-	<li><a href="/logout" title="">Logout</a></li>
-	<li><a href="/channel" title="">Secret Page</a></li>
+
 	<% include partials/footer %>

@@ -8,7 +8,8 @@ var express 				= require('express'),
 	LocalStrategy 			= require('passport-local'),
 	methodOverride 			= require('method-override'),
 	passportLocalMongoose 	= require('passport-local-mongoose'),
-	expressSanitizer 		= require('express-sanitizer');;
+	expressSanitizer 		= require('express-sanitizer');
+ 
 
 mongoose.connect("mongodb://localhost/gate_way");
 var app = express();
@@ -63,11 +64,12 @@ app.get("/register", function(req, res){
 
 //SECRET or INDEX page
 app.get("/channel", isLoggedIn , function(req, res){
-	Channel.find({},function(err, channel){
+	Channel.find({auther : req.user.username}, function(err, channel){
 		if (err) {
 			console.log(err);
 		} else {
 			res.render("channel", {channel:channel});
+
 		}
 	});
 });
@@ -75,7 +77,10 @@ app.get("/channel", isLoggedIn , function(req, res){
 
 //NEW ROUTE 
 app.get("/channel/new", isLoggedIn ,function(req, res){
-	res.render("new");
+	var username = req.user.username;
+	user = JSON.parse(JSON.stringify(username));
+	console.log(user);
+	res.render("new", {user: user});
 });
 
 //CREATE ROUTE

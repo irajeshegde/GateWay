@@ -1,6 +1,11 @@
 <% include partials/header %>
 <div class="ui main text container">
-	<div class="ui huge header">Welcome!</div>
+	<div class="ui huge header">
+		Hello! 
+		<%if(channel[0]){ %>
+		<%=channel[0].auther.toUpperCase()%>
+		<%}%>
+		</div>
 	<div class="item">
 				<a href="/channel/new" class="ui primary button">New Channel</a>
 	</div>
@@ -38,9 +43,13 @@
 			<% }) %>
 		</div>
 	</div>
+	<div align="center">
+		<li><a href="/logout" title="">Logout</a></li>
+		<li><a href="/channel" title="">Secret Page</a></li>
+	</div>
+
+	
 </div>
-<li><a href="/register" title="">Register</a></li>
-<li><a href="/login" title="">Log In</a></li>
-<li><a href="/logout" title="">Logout</a></li>
-<li><a href="/channel" title="">Secret Page</a></li>
+
+
 <% include partials/footer %>

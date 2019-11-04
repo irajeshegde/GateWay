@@ -3,6 +3,10 @@
 	<div class="ui huge header">Add Channel!</div>
 	<form class="ui form" action="/channel" method="POST">
 		<div class="field">
+			<label>Auther</label>
+			<input type="text" name="channel[auther]" value="<%=user%>" readonly>
+		</div>
+		<div class="field">
 			<label>Channel name</label>
 			<input type="text" name="channel[title]" placeholder="Title">
 		</div>
@@ -28,9 +32,13 @@
 		</div>
 		<input class="ui green big basic button" type="submit">
 	</form>
+	<div align="center">
+		<li><a href="/logout" title="">Logout</a></li>
+		<li><a href="/channel" title="">Secret Page</a></li>		
+	</div>
+
+
 </div>
-<li><a href="/register" title="">Register</a></li>
-<li><a href="/login" title="">Log In</a></li>
-<li><a href="/logout" title="">Logout</a></li>
-<li><a href="/channel" title="">Secret Page</a></li>
+
+
 <% include partials/footer %>

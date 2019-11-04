@@ -3,14 +3,41 @@
 <br>
 <br>
 <br>
-<h1>Log in</h1>
-<form action="/login" method="POST">
-	<input type="text" name="username" placeholder="username">
-	<input type="password" name="password" placeholder="password">
-	<button>Login</button>
-</form>
-<li><a href="/register" title="">Register</a></li>
-<li><a href="/login" title="">Log In</a></li>
-<li><a href="/logout" title="">Logout</a></li>
-<li><a href="/channel" title="">Secret Page</a></li>
+
+<div class="ui raised very padded text container segment">
+  <h1 class="ui header">Log In</h1>
+	<form class="form" action="/login" method="POST">
+<!-- 		<input type="text" name="username" placeholder="username">
+		<input type="password" name="password" placeholder="password">
+		<br>
+		<br>
+		<div>
+			<button class="ui button">Login</button>			
+		</div> -->
+		<div class="ui big form">
+		  <div class="two fields">
+		    <div class="field">
+		      <label>Username</label>
+		      <input placeholder="Username" name="username" type="text">
+		    </div>
+		    <div class="field">
+		      <label>Password</label>
+		      <input placeholder="Password" name="password" type="password">
+		    </div>
+		  </div>
+		  <div>
+		  	<button class="ui button">Login</button>
+		  </div>
+		</div>
+	</form>
+	<br>
+	<br>
+	<div align="center">
+		<li><a href="/register" title="">Register</a></li>
+		<li><a href="/channel" title="">Secret Page</a></li>
+	</div>
+
+
+</div>
+
 <% include partials/footer %>
