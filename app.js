@@ -146,7 +146,7 @@ app.delete("/channel/:id", isLoggedIn ,function(req, res){
 });
 
 //SHOW JSON RESPONSE
-app.get("/channel/api/:id", isLoggedIn ,function(req, res){
+app.get("/channel/api/:id" ,function(req, res){
 	Channel.findById(req.params.id,function(err, foundPost){
 		if (err) {
 			console.log(err);
