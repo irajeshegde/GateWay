@@ -48,7 +48,7 @@ Logout - Ends the login session for the current user.
 
 * **Logout** - Ends the login session for the current user.
 
-Feel free to contribute to this project! Happy Coding! 😄
+#### Feel free to contribute to this project! Happy Coding! 😄
 
 
 
