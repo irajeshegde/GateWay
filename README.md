@@ -1,5 +1,5 @@
 # GateWay - An open-source IoT Platform
-
+[logo]: https://github.com/irajeshegde/GateWay/blob/master/images/logo.jpg
 ## About
 GateWay is an online platform that manages all the data collected and used by your IoT application. Once connected to your device or application, one can control their device or access the data from the device from anywhere around the globe that has an internet connection.
 
@@ -19,10 +19,10 @@ GateWay is an online platform that manages all the data collected and used by yo
 ..* ```$git clone https://github.com/irajeshegde/GateWay.git```
 
 - Once the code is downloaded, follow these steps (in terminal)
-..* Start mongoDB server by running ```$mongod``` and keep it running
-..* ```$cd GateWay``` - move into the GateWay directory
-..* ```$npm i``` - install packages
-..* ```$node app.js``` - Run the nodejs server
+... * Start mongoDB server by running ```$mongod``` and keep it running
+... * ```$cd GateWay``` - move into the GateWay directory
+... * ```$npm i``` - install packages
+... * ```$node app.js``` - Run the nodejs server
 
 ## Web Browser (Open any web-browser)
 Open http://localhost:3000/ to see your running project!
