@@ -37,7 +37,7 @@ Open http://localhost:3000/ to see your running project!
 Secret page - Homepage which needs authentication. ( Without authentication it is not possible to access any of the pages or data )
 
 * **New Channel** - To create a channel. He can add 2 fields along with names and values. Each channel will contain API key and USAGE url to access the values of that particular channel from microcontroller.
-Example: 	**API KEY : 5dc0768ffc9e3124342059ef**
+Example: 	**API KEY : *5dc0768ffc9e3124342059ef***
 USAGE : **http://localhost:3000/channel/api/5dc0768ffc9e3124342059ef**
 
 
