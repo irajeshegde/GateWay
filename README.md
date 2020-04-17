@@ -17,13 +17,13 @@ GateWay is an online platform that manages all the data collected and used by yo
   * https://www.mongodb.com/
 
 - Download the project from github
-... * ```$git clone https://github.com/irajeshegde/GateWay.git```
+  * `$git clone https://github.com/irajeshegde/GateWay.git`
 
 - Once the code is downloaded, follow these steps (in terminal)
   * Start mongoDB server by running ```$mongod``` and keep it running
-  * ```$cd GateWay``` - move into the GateWay directory
-  * ```$npm i``` - install packages
-  * ```$node app.js``` - Run the nodejs server
+  * `$cd GateWay` - move into the GateWay directory
+  * `$npm i` - install packages
+  * `$node app.js` - Run the nodejs server
 
 ## Web Browser (Open any web-browser)
 Open http://localhost:3000/ to see your running project!
@@ -37,12 +37,19 @@ Open http://localhost:3000/ to see your running project!
 Secret page - Homepage which needs authentication. ( Without authentication it is not possible to access any of the pages or data )
 
 * **New Channel** - To create a channel. He can add 2 fields along with names and values. Each channel will contain API key and USAGE url to access the values of that particular channel from microcontroller.
-Example: 	API KEY : 5dc0768ffc9e3124342059ef
-USAGE : http://localhost:3000/channel/api/5dc0768ffc9e3124342059ef
+Example: 	**API KEY : 5dc0768ffc9e3124342059ef**
+USAGE : **http://localhost:3000/channel/api/5dc0768ffc9e3124342059ef**
 
 
 * **View channel** - It will take you to more details of created channel where you can see the given values and also you can Update values of the field. Delete will delete that particular channel.
 Logout - Ends the login session for the current user.
+
+* **Logout** - Ends the login session for the current user.
+
+* **Logout** - Ends the login session for the current user.
+
+Feel free to contribute to this project! Happy Coding! 😄
+
 
 
 
